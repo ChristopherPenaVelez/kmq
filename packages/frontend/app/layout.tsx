@@ -42,6 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 )}
                 <a href="/songs" className="text-gray-700 hover:text-gray-900">My Library</a>
                 <a href="/quiz" className="text-gray-700 hover:text-gray-900">Quiz</a>
+                <a href="/leaderboard" className="text-gray-700 hover:text-gray-900">Leaderboard</a>
                 <button
                   onClick={handleLogout}
                   className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded"
