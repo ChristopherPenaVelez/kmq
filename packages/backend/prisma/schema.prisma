@@ -16,7 +16,6 @@ model Song {
   updatedAt DateTime @updatedAt
 }
 
-// Add these two new models for quiz sessions and results
 model QuizSession {
   id           Int          @id @default(autoincrement())
   mode         String
@@ -39,6 +38,9 @@ model QuizResult {
 
 model User {
   id        Int      @id @default(autoincrement())
+  username  String   @unique
+  dob       DateTime?
+
   email     String   @unique
   password  String
   isAdmin   Boolean  @default(false)
