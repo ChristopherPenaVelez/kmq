@@ -14,16 +14,22 @@ interface ScoreEntry {
 
 export default function LeaderboardPage() {
   const [scores, setScores] = useState<ScoreEntry[]>([])
+  const [error, setError] = useState('')
 
   useEffect(() => {
-    axios.get('http://localhost:4000/api/score/top', { withCredentials: true })
-      .then(res => setScores(res.data))
-      .catch(err => console.error('Failed to fetch leaderboard:', err))
+    axios
+      .get('http://localhost:4000/api/score/top', { withCredentials: true })
+      .then((res) => setScores(res.data))
+      .catch((err) => {
+        console.error('Failed to fetch leaderboard:', err)
+        setError('Failed to fetch leaderboard')
+      })
   }, [])
 
   return (
     <div className="p-8 max-w-md mx-auto">
       <h1 className="text-2xl font-bold mb-4">Leaderboard</h1>
+      {error && <p className="text-red-600 mb-2">{error}</p>}
       {scores.length === 0 ? (
         <p>No scores available.</p>
       ) : (
